@@ -3,7 +3,7 @@ WORKDIR /app
 COPY . .
 RUN CGO_ENABLED=0 go build -o whatismyip .
 
-FROM alpine:3.21
+FROM alpine:3.23
 RUN addgroup -g 1000 app && adduser -D -u 1000 -G app app
 WORKDIR /
 COPY --from=builder /app/whatismyip /whatismyip
